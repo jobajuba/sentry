@@ -20,8 +20,13 @@ from sentry.notifications.utils import (
 )
 from sentry.notifications.utils.participants import get_send_to
 from sentry.plugins.base.structs import Notification
+from sentry.rules.conditions.active_release import latest_release
 from sentry.types.integrations import ExternalProviders
 from sentry.utils import metrics
+<<<<<<< HEAD
+=======
+from sentry.utils.committers import _get_commits
+>>>>>>> f43033158d (fix last_release actually being passed downstream. update email template to use release_commits)
 from sentry.utils.http import absolute_uri
 
 logger = logging.getLogger(__name__)
