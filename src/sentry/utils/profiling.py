@@ -17,12 +17,15 @@ def get_from_profiling_service(
     path: str,
     params: Optional[Dict[Any, Any]] = None,
     headers: Optional[Dict[Any, Any]] = None,
+    json: Any = None,
 ) -> Response:
     kwargs: Dict[str, Any] = {"method": method, "headers": {}, "stream": True}
     if params:
         kwargs["params"] = params
     if headers:
         kwargs["headers"].update(headers)
+    if json:
+        kwargs["json"] = json
     if settings.ENVIRONMENT == "production":
         id_token = fetch_id_token_for_service(settings.SENTRY_PROFILING_SERVICE_URL)
         kwargs["headers"].update({"Authorization": f"Bearer {id_token}"})
